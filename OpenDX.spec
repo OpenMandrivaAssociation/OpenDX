@@ -6,7 +6,7 @@ Name:		OpenDX
 Summary:	IBM OpenDX (Data Explorer)
 
 Version:	4.4.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
@@ -66,12 +66,13 @@ autoconf
 %build
 CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions" \
 CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated" \
-%configure2_5x --prefix=%{_libdir} \
-           --with-x \
-	   --with-magick \
-	   --with-netcdf \
-           --with-jbig \
-           --without-javadx
+%configure2_5x \
+	--prefix=%{_libdir} \
+	--with-x \
+	--with-magick \
+	--with-netcdf \
+	--with-jbig \
+	--without-javadx
 make
 
 (cd %{samplesname}-%{sver}
