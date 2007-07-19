@@ -6,11 +6,11 @@ Name:		OpenDX
 Summary:	IBM OpenDX (Data Explorer)
 
 Version:	4.4.4
-Release:	%mkrel 3
+Release:	%mkrel 4
 
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
-Source2:	icons-dx.tar.bz2
+Source2:	dx.png
 Patch4:		dx-4.2.0-errno.patch
 Patch5:		dx-4.2.0-xkb.patch
 Patch6:		dx-4.3.2-types.patch
@@ -22,7 +22,7 @@ Patch11:	dx-4.4.4-undefined.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  freetype-devel
@@ -31,6 +31,7 @@ BuildRequires:  libMagick-devel
 BuildRequires:  lesstif-devel
 BuildRequires:  libjbig-devel
 BuildRequires:  netcdf-devel
+BuildRequires:	ImageMagick
 %ifnarch ppc
 BuildRequires:	HDF
 %endif
@@ -115,22 +116,10 @@ ln -s %{dxdir}/bin_linux/dxexec $RPM_BUILD_ROOT%{_bindir}/dxexec
 rm -rf $RPM_BUILD_ROOT%{_libdir}/bin/dx
 
 # icons
-mkdir -p $RPM_BUILD_ROOT%{_iconsdir} \
-	 $RPM_BUILD_ROOT%{_menudir}
-tar xjf %{SOURCE2} -C $RPM_BUILD_ROOT%{_iconsdir}
-
-# menu
-cat >$RPM_BUILD_ROOT%{_menudir}/OpenDX <<EOF
-?package(OpenDX): command="%{_bindir}/dx" \
-needs="X11" \
-icon="dx.png" \
-section="Applications/Sciences/Mathematics" \
-title="OpenDX" \
-%if %{mdkversion} >= 200610
-xdg=true \
-%endif
-longtitle="Visualization Data Explorer"
-EOF
+mkdir -p $RPM_BUILD_ROOT%{_iconsdir}/hicolor/{48x48,32x32,16x16}/apps
+install -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/dx.png
+convert -scale 32 %{SOURCE2} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/dx.png
+convert -scale 16 %{SOURCE2} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/dx.png
 
 # desktop menu
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
@@ -142,7 +131,7 @@ Exec=%{_bindir}/dx
 Terminal=false
 Type=Application
 Icon=dx
-Categories=X-MandrivaLinux-MoreApplications-Sciences-Mathematics;Science;Math;
+Categories=Science;Math;
 StartupWMClass=startupWindow
 EOF
 
@@ -162,9 +151,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %{update_menus}
+%{update_icon_cache hicolor}
 
 %postun
 %{clean_menus}
+%{clean_icon_cache hicolor}
 
 %files
 %defattr(-,root,root)
@@ -181,10 +172,9 @@ rm -rf $RPM_BUILD_ROOT
 %{dxdir}/lib
 %{dxdir}/ui
 %{dxdir}/java
-%{_iconsdir}/dx.*
-%{_liconsdir}/dx.*
-%{_miconsdir}/dx.*
-%{_menudir}/OpenDX
+%{_iconsdir}/hicolor/48x48/apps/dx.png
+%{_iconsdir}/hicolor/32x32/apps/dx.png
+%{_iconsdir}/hicolor/16x16/apps/dx.png
 %{_datadir}/applications/*.desktop
 
 %files devel
