@@ -32,6 +32,7 @@ BuildRequires:  lesstif-devel
 BuildRequires:  libjbig-devel
 BuildRequires:  netcdf-devel
 BuildRequires:	ImageMagick
+BuildRequires:	kernel-source
 %ifnarch ppc
 BuildRequires:	HDF
 %endif
