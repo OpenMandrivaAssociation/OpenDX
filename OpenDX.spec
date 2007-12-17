@@ -36,7 +36,6 @@ BuildRequires:	kernel-source
 %ifnarch ppc
 BuildRequires:	HDF
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 OpenDX is a uniquely powerful, full-featured software package for the
