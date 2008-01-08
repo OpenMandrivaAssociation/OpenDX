@@ -6,7 +6,7 @@ Name:		OpenDX
 Summary:	IBM OpenDX (Data Explorer)
 
 Version:	4.4.4
-Release:	%mkrel 4
+Release:	%mkrel 5
 
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
@@ -27,11 +27,11 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  freetype-devel
 BuildRequires:	libMesaGLU-devel
-BuildRequires:  libMagick-devel
+BuildRequires:  libmagick-devel
 BuildRequires:  lesstif-devel
 BuildRequires:  libjbig-devel
 BuildRequires:  netcdf-devel
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	kernel-source
 %ifnarch ppc
 BuildRequires:	HDF
