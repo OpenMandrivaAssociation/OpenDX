@@ -66,8 +66,8 @@ applications with OpenDX.
 autoconf
 
 %build
-CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions" \
-CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated" \
+CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include" \
+CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/src/linux/include" \
 %configure2_5x \
 	--prefix=%{_libdir} \
 	--with-x \
