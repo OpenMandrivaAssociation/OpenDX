@@ -26,7 +26,7 @@ BuildRequires:	autoconf
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  freetype-devel
-BuildRequires:	libMesaGLU-devel
+BuildRequires:	mesaglu-devel
 BuildRequires:  libmagick-devel
 BuildRequires:  lesstif-devel
 BuildRequires:  libjbig-devel
