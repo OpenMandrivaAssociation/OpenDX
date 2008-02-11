@@ -4,10 +4,8 @@
 
 Name:		OpenDX
 Summary:	IBM OpenDX (Data Explorer)
-
 Version:	4.4.4
-Release:	%mkrel 5
-
+Release:	%mkrel 6
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
@@ -19,6 +17,7 @@ Patch8:		dx-4.4.4-returnval.patch
 Patch9:		dx-4.4.4-implicit_decl.patch
 Patch10:	dx-4.4.4-unitialized.patch
 Patch11:	dx-4.4.4-undefined.patch
+Patch12:	dx-imagemagick-6.3.8.5.diff
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
@@ -63,11 +62,13 @@ applications with OpenDX.
 %patch9 -p1 -b .implicit
 %patch10 -p1 -b .uninit
 %patch11 -p1 -b .undefined
-autoconf
+%patch12 -p0
+
+rm -f configure; autoconf
 
 %build
-CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include" \
-CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/src/linux/include" \
+CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
+CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
 %configure2_5x \
 	--prefix=%{_libdir} \
 	--with-x \
