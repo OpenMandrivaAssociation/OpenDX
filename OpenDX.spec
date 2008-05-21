@@ -2,10 +2,10 @@
 %define sver	4.4.0
 %define dxdir	%{_libdir}/dx
 
-Name:		OpenDX
 Summary:	IBM OpenDX (Data Explorer)
+Name:		OpenDX
 Version:	4.4.4
-Release:	%mkrel 6
+Release:	%mkrel 7
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
@@ -18,6 +18,8 @@ Patch9:		dx-4.4.4-implicit_decl.patch
 Patch10:	dx-4.4.4-unitialized.patch
 Patch11:	dx-4.4.4-undefined.patch
 Patch12:	dx-imagemagick-6.3.8.5.diff
+Patch13:	dx-open.patch
+Patch14:	dx-gcc43.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
@@ -63,6 +65,8 @@ applications with OpenDX.
 %patch10 -p1 -b .uninit
 %patch11 -p1 -b .undefined
 %patch12 -p0
+%patch13 -p1 -b .open
+%patch14 -p1 -b .gcc43
 
 rm -f configure; autoconf
 
@@ -83,49 +87,49 @@ make
 %make) 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_libdir} \
-	$RPM_BUILD_ROOT%{_includedir}
-%makeinstall prefix=$RPM_BUILD_ROOT%{_libdir} \
-	libdir=$RPM_BUILD_ROOT%{dxdir} \
-	mandir=$RPM_BUILD_ROOT%{_mandir}
-ln -sf %{dxdir}/include/dxconfig.h $RPM_BUILD_ROOT%{_includedir}/dxconfig.h
-ln -sf %{dxdir}/include/dxl.h $RPM_BUILD_ROOT%{_includedir}/dxl.h
-ln -sf %{dxdir}/include/dx $RPM_BUILD_ROOT%{_includedir}/dx
-ln -sf %{dxdir}/lib_linux/libDX.a $RPM_BUILD_ROOT%{_libdir}/libDX.a
-ln -sf %{dxdir}/lib_linux/libDXcallm.a $RPM_BUILD_ROOT%{_libdir}/libDXcallm.a
-ln -sf %{dxdir}/lib_linux/libDXL.a $RPM_BUILD_ROOT%{_libdir}/libDXL.a
-ln -sf %{dxdir}/lib_linux/libDXlite.a $RPM_BUILD_ROOT%{_libdir}/libDXlite.a
-rm -rf $RPM_BUILD_ROOT%{dxdir}/man
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_libdir} \
+	%{buildroot}%{_includedir}
+%makeinstall prefix=%{buildroot}%{_libdir} \
+	libdir=%{buildroot}%{dxdir} \
+	mandir=%{buildroot}%{_mandir}
+ln -sf %{dxdir}/include/dxconfig.h %{buildroot}%{_includedir}/dxconfig.h
+ln -sf %{dxdir}/include/dxl.h %{buildroot}%{_includedir}/dxl.h
+ln -sf %{dxdir}/include/dx %{buildroot}%{_includedir}/dx
+ln -sf %{dxdir}/lib_linux/libDX.a %{buildroot}%{_libdir}/libDX.a
+ln -sf %{dxdir}/lib_linux/libDXcallm.a %{buildroot}%{_libdir}/libDXcallm.a
+ln -sf %{dxdir}/lib_linux/libDXL.a %{buildroot}%{_libdir}/libDXL.a
+ln -sf %{dxdir}/lib_linux/libDXlite.a %{buildroot}%{_libdir}/libDXlite.a
+rm -rf %{buildroot}%{dxdir}/man
 #
-(cd $RPM_BUILD_ROOT/%{dxdir}/html
+(cd %{buildroot}/%{dxdir}/html
 ln -sf allguide.htm index.htm
 ln -sf allguide.htm index.html
 )
 #
 (cd %{samplesname}-%{sver}
-make install prefix=$RPM_BUILD_ROOT%{_libdir}
+make install prefix=%{buildroot}%{_libdir}
 )
 
-mkdir -p $RPM_BUILD_ROOT%{dxdir}/lib
-install -m 644 ./lib/mdf2c.awk $RPM_BUILD_ROOT%{dxdir}/lib/
+mkdir -p %{buildroot}%{dxdir}/lib
+install -m 644 ./lib/mdf2c.awk %{buildroot}%{dxdir}/lib/
 
 # fix dxexec path
-mv $RPM_BUILD_ROOT%{_bindir}/dxexec $RPM_BUILD_ROOT%{dxdir}/bin_linux/dxexec
-ln -s %{dxdir}/bin_linux/dxexec $RPM_BUILD_ROOT%{_bindir}/dxexec
+mv %{buildroot}%{_bindir}/dxexec %{buildroot}%{dxdir}/bin_linux/dxexec
+ln -s %{dxdir}/bin_linux/dxexec %{buildroot}%{_bindir}/dxexec
 
 # remove files not packaged
-rm -rf $RPM_BUILD_ROOT%{_libdir}/bin/dx
+rm -rf %{buildroot}%{_libdir}/bin/dx
 
 # icons
-mkdir -p $RPM_BUILD_ROOT%{_iconsdir}/hicolor/{48x48,32x32,16x16}/apps
-install -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/dx.png
-convert -scale 32 %{SOURCE2} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/dx.png
-convert -scale 16 %{SOURCE2} $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/dx.png
+mkdir -p %{buildroot}%{_iconsdir}/hicolor/{48x48,32x32,16x16}/apps
+install -m 644 %{SOURCE2} %{buildroot}%{_iconsdir}/hicolor/48x48/apps/dx.png
+convert -scale 32 %{SOURCE2} %{buildroot}%{_iconsdir}/hicolor/32x32/apps/dx.png
+convert -scale 16 %{SOURCE2} %{buildroot}%{_iconsdir}/hicolor/16x16/apps/dx.png
 
 # desktop menu
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
 [Desktop Entry]
 Name=OpenDX
 Comment=Visualization Data Explorer
@@ -138,18 +142,18 @@ StartupWMClass=startupWindow
 EOF
 
 # Clean installed tree
-find $RPM_BUILD_ROOT/%_libdir -type f -or -type d | xargs chmod go-w
-rm -f $RPM_BUILD_ROOT%{dxdir}/samples/outboard/Makefile_os2 \
-	$RPM_BUILD_ROOT%{dxdir}/samples/user/Makefile_os2
+find %{buildroot}/%_libdir -type f -or -type d | xargs chmod go-w
+rm -f %{buildroot}%{dxdir}/samples/outboard/Makefile_os2 \
+	%{buildroot}%{dxdir}/samples/user/Makefile_os2
 
-rm -f $RPM_BUILD_ROOT/%_libdir/dx/samples/data/externalfilter_alphax
-rm -f $RPM_BUILD_ROOT/%_libdir/dx/samples/data/externalfilter_hp700
-rm -f $RPM_BUILD_ROOT/%_libdir/dx/samples/data/externalfilter_ibm6000
-rm -f $RPM_BUILD_ROOT/%_libdir/dx/samples/data/externalfilter_sgi
-rm -f $RPM_BUILD_ROOT/%_libdir/dx/samples/data/externalfilter_solaris
+rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_alphax
+rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_hp700
+rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_ibm6000
+rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_sgi
+rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %{update_menus}
@@ -188,5 +192,3 @@ rm -rf $RPM_BUILD_ROOT
 %{dxdir}/samples
 %{dxdir}/lib_linux
 %{dxdir}/lib/mdf2c.awk
-
-
