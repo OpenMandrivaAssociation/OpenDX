@@ -155,13 +155,17 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 %clean
 rm -rf %{buildroot}
 
+%if %mdkversion < 200900
 %post
 %{update_menus}
 %{update_icon_cache hicolor}
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %{clean_icon_cache hicolor}
+%endif
 
 %files
 %defattr(-,root,root)
