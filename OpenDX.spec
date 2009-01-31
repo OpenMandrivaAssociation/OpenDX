@@ -20,6 +20,7 @@ Patch11:	dx-4.4.4-undefined.patch
 Patch12:	dx-imagemagick-6.3.8.5.diff
 Patch13:	dx-open.patch
 Patch14:	dx-gcc43.patch
+Patch15:	dx-4.4.4-autoconf.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
@@ -67,6 +68,7 @@ applications with OpenDX.
 %patch12 -p0
 %patch13 -p1 -b .open
 %patch14 -p1 -b .gcc43
+%patch15 -p1 -b .autoconf
 
 rm -f configure; autoconf
 
