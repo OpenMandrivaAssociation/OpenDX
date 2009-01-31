@@ -9,7 +9,7 @@ Release:	%mkrel 8
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
-Patch4:		dx-4.2.0-errno.patch
+Patch4:		dx-4.4.4-errno.patch
 Patch5:		dx-4.2.0-xkb.patch
 Patch6:		dx-4.3.2-types.patch
 Patch7:		dx-4.4.4-String.patch
