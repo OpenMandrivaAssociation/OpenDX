@@ -23,6 +23,7 @@ Patch14:	dx-gcc43.patch
 Patch15:	dx-4.4.4-autoconf.patch
 Patch16:	dx-4.4.4-fix-str-fmt.patch
 Patch17:	dx-4.4.4-linkage.patch
+Patch18:	opendx-4.4.4-concurrent-make-fix.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
@@ -73,6 +74,7 @@ applications with OpenDX.
 %patch15 -p1 -b .autoconf
 %patch16 -p0 -b .str
 %patch17 -p0 -b .link
+%patch18 -p1 -b .tmp
 
 rm -f configure; autoreconf -fi
 
