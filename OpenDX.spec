@@ -24,7 +24,7 @@ Patch15:	dx-4.4.4-autoconf.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
-BuildRequires:	autoconf
+BuildRequires:	autoconf libtool
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  freetype-devel
@@ -82,7 +82,7 @@ CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/sr
 	--with-netcdf \
 	--with-jbig \
 	--without-javadx
-make
+make LIBTOOL=%_bindir/libtool
 
 (cd %{samplesname}-%{sver}
 %configure --prefix=%{_libdir}
@@ -94,7 +94,8 @@ mkdir -p %{buildroot}%{_libdir} \
 	%{buildroot}%{_includedir}
 %makeinstall prefix=%{buildroot}%{_libdir} \
 	libdir=%{buildroot}%{dxdir} \
-	mandir=%{buildroot}%{_mandir}
+	mandir=%{buildroot}%{_mandir} \
+	LIBTOOL=%_bindir/libtool
 ln -sf %{dxdir}/include/dxconfig.h %{buildroot}%{_includedir}/dxconfig.h
 ln -sf %{dxdir}/include/dxl.h %{buildroot}%{_includedir}/dxl.h
 ln -sf %{dxdir}/include/dx %{buildroot}%{_includedir}/dx
