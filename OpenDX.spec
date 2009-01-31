@@ -21,6 +21,8 @@ Patch12:	dx-imagemagick-6.3.8.5.diff
 Patch13:	dx-open.patch
 Patch14:	dx-gcc43.patch
 Patch15:	dx-4.4.4-autoconf.patch
+Patch16:	dx-4.4.4-fix-str-fmt.patch
+Patch17:	dx-4.4.4-linkage.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
@@ -69,8 +71,10 @@ applications with OpenDX.
 %patch13 -p1 -b .open
 %patch14 -p1 -b .gcc43
 %patch15 -p1 -b .autoconf
+%patch16 -p0 -b .str
+%patch17 -p0 -b .link
 
-rm -f configure; autoconf
+rm -f configure; autoreconf -fi
 
 %build
 CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
@@ -82,7 +86,7 @@ CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/sr
 	--with-netcdf \
 	--with-jbig \
 	--without-javadx
-make LIBTOOL=%_bindir/libtool
+%make 
 
 (cd %{samplesname}-%{sver}
 %configure --prefix=%{_libdir}
