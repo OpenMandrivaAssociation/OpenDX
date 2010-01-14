@@ -24,6 +24,7 @@ Patch15:	dx-4.4.4-autoconf.patch
 Patch16:	dx-4.4.4-fix-str-fmt.patch
 Patch17:	dx-4.4.4-linkage.patch
 Patch18:	opendx-4.4.4-concurrent-make-fix.patch
+Patch19:	dx-4.4.4-newer-imagemagick.patch
 URL:		http://www.opendx.org/
 Group:		Sciences/Other
 License:	IBM Public License
@@ -75,6 +76,7 @@ applications with OpenDX.
 %patch16 -p0 -b .str
 %patch17 -p0 -b .link
 %patch18 -p1 -b .tmp
+%patch19 -p0 -b .imagemagick
 
 rm -f configure; autoreconf -fi
 
