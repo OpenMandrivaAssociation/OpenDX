@@ -5,7 +5,7 @@
 Summary:	IBM OpenDX (Data Explorer)
 Name:		OpenDX
 Version:	4.4.4
-Release:	%mkrel 12
+Release:	%mkrel 13
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
@@ -81,8 +81,13 @@ applications with OpenDX.
 rm -f configure; autoreconf -fi
 
 %build
+
 CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
 CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
+
+#fix netcdf hdf5 linking
+sed -i 's/-lnetcdf/-lnetcdf -lhdf5_hl -lhdf5 -lz/g' ./configure
+
 %configure2_5x \
 	--prefix=%{_libdir} \
 	--with-x \
@@ -90,10 +95,10 @@ CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/sr
 	--with-netcdf \
 	--with-jbig \
 	--without-javadx
-%make 
+make 
 
 (cd %{samplesname}-%{sver}
-%configure --prefix=%{_libdir}
+%configure2_5x --prefix=%{_libdir}
 %make) 
 
 %install
