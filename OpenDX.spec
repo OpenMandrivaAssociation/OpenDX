@@ -5,8 +5,11 @@
 Summary:	IBM OpenDX (Data Explorer)
 Name:		OpenDX
 Version:	4.4.4
-Release:	%mkrel 15
-Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
+Release:	16
+Group:		Sciences/Other
+License:	IBM Public License
+URL:		http://www.opendx.org/
+Source0:	http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
 Patch4:		dx-4.4.4-errno.patch
@@ -25,10 +28,8 @@ Patch16:	dx-4.4.4-fix-str-fmt.patch
 Patch17:	dx-4.4.4-linkage.patch
 Patch18:	opendx-4.4.4-concurrent-make-fix.patch
 Patch19:	dx-4.4.4-newer-imagemagick.patch
-URL:		http://www.opendx.org/
-Group:		Sciences/Other
-License:	IBM Public License
-BuildRequires:	autoconf libtool
+
+BuildRequires:	libtool
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  freetype-devel
@@ -42,7 +43,6 @@ BuildRequires:	kernel-source
 %ifnarch ppc
 BuildRequires:	HDF
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 OpenDX is a uniquely powerful, full-featured software package for the
@@ -171,20 +171,7 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 %clean
 rm -rf %{buildroot}
 
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%{update_icon_cache hicolor}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%{clean_icon_cache hicolor}
-%endif
-
 %files
-%defattr(-,root,root)
 %doc AUTHORS LICENSE README
 %dir %{dxdir}
 %{_bindir}/*
@@ -204,7 +191,6 @@ rm -rf %{buildroot}
 %{_datadir}/applications/*.desktop
 
 %files devel
-%defattr(-,root,root)
 %attr(644,root,root) %{_libdir}/*.a
 %doc dxsamples-%{sver}/ChangeLog
 %{_includedir}/*
