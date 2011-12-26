@@ -41,7 +41,7 @@ BuildRequires:  netcdf-devel
 BuildRequires:	imagemagick
 BuildRequires:	kernel-source
 %ifnarch ppc
-BuildRequires:	HDF
+BuildRequires:	HDF-devel
 %endif
 
 %description
@@ -81,9 +81,10 @@ applications with OpenDX.
 rm -f configure; autoreconf -fi
 
 %build
-
-CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
-CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
+# there is no more sym link to /usr/src/linux
+LINUXINCLUDEDIR=$(ls -1dtr /usr/src/linux-* | tail -n 1)
+CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I$LINUXINCLUDEDIR/include -I%{_includedir}/ImageMagick" \
+CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I$LINUXINCLUDEDIR/include -I%{_includedir}/ImageMagick" \
 
 #fix netcdf hdf5 linking
 sed -i 's/-lnetcdf/-lnetcdf -lhdf5_hl -lhdf5 -lz/g' ./configure
@@ -167,9 +168,6 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_hp700
 rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_ibm6000
 rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_sgi
 rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %doc AUTHORS LICENSE README
