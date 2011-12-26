@@ -82,7 +82,9 @@ rm -f configure; autoreconf -fi
 
 %build
 # there is no more sym link to /usr/src/linux
-LINUXINCLUDEDIR=$(ls -1dtr /usr/src/linux-* | tail -n 1)
+#LINUXINCLUDEDIR=$(ls -1dtr /usr/src/linux-* | tail -n 1)
+# another work around because old kernel sources still get installed
+LINUXINCLUDEDIR=$(ls -1dtr /usr/src/kernel-* | tail -n 1)
 CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I$LINUXINCLUDEDIR/include -I%{_includedir}/ImageMagick" \
 CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I$LINUXINCLUDEDIR/include -I%{_includedir}/ImageMagick" \
 
