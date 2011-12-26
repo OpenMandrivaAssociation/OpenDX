@@ -183,6 +183,7 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 %{dxdir}/help
 %{dxdir}/html
 %{dxdir}/lib
+%exclude %{dxdir}/lib/mdf2c.awk
 %{dxdir}/ui
 %{dxdir}/java
 %{_iconsdir}/hicolor/48x48/apps/dx.png
