@@ -1,0 +1,18 @@
+--- dx-4.4.4/src/exec/libdx/mem.c.errno	2006-01-05 23:55:49.000000000 +0100
++++ dx-4.4.4/src/exec/libdx/mem.c	2009-01-31 15:17:32.000000000 +0100
+@@ -77,6 +77,7 @@
+ #endif
+ 
+ #include <string.h>
++#include <errno.h>
+ #include <dx/dx.h>
+ #include "../dpexec/dxmain.h"
+ 
+@@ -332,7 +333,6 @@
+     ulong totalsize = 0;
+     Pointer tbase, tend;
+     int tcount;
+-    extern int errno;
+     char *cp;
+ 
+     /* decide on shared mem or the data segment */

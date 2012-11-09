@@ -1,0 +1,8 @@
+--- dx-4.2.0/src/uipp/base/defines.h~	2003-02-18 21:24:10.000000000 +0100
++++ dx-4.2.0/src/uipp/base/defines.h	2003-02-18 21:24:10.000000000 +0100
+@@ -240,3 +240,5 @@
+ #endif
+ 
+ #endif
++
++#define XK_XKB_KEYS

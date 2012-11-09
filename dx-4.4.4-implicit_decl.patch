@@ -1,0 +1,10 @@
+--- dx-4.4.4/src/exec/hwrender/hwRender.c.implicit	2006-06-27 23:24:43.000000000 +0200
++++ dx-4.4.4/src/exec/hwrender/hwRender.c	2007-02-18 10:22:24.000000000 +0100
+@@ -8,6 +8,7 @@
+ 
+ #include <dxconfig.h>
+ 
++#include <unistd.h>
+ 
+ #define tdmRender_c
+ 

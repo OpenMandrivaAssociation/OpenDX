@@ -1,0 +1,51 @@
+--- configure.ac	2006-08-21 23:56:08.000000000 +0200
++++ configure.ac.oden	2008-02-11 13:19:30.000000000 +0100
+@@ -797,11 +797,11 @@
+ if test "$with_magick" != 'no'
+ then
+     AS_MESSAGE([checking for ImageMagick support ......])
+-    AC_CHECK_PROG(HAVE_MC, Magick-config, yes, no)
++    AC_CHECK_PROG(HAVE_MC, MagickCore-config, yes, no)
+ 
+     failed=0;
+     passed=0;
+-    AC_CHECK_HEADER([magick/api.h],[passed=`expr $passed + 1`],[failed=`expr $failed + 1`])
++    AC_CHECK_HEADER([magick/api.h],[passed=`expr $passed + 1`],[failed=`expr $failed + 1`])
+ if test "$ARCH" = "intelnt" ; then
+     AC_CHECK_LIB(CORE_RL_magick_,Hopen,passed=`expr $passed + 1`,failed=`expr $failed + 1`,)
+     AC_MSG_CHECKING(if ImageMagick package is complete)
+@@ -835,8 +835,8 @@
+ dnl format configuration libraries.
+ 
+  if test "$HAVE_MC" = "yes" ; then
+-    LIB_MAGICK="`Magick-config --ldflags` `Magick-config --libs`"
+-    AC_CHECK_LIB( Magick,GetImageInfo, passed=`expr $passed + 1`, failed=`expr $failed + 1`, [ $LIB_MAGICK ])
++    LIB_MAGICK="`MagickCore-config --ldflags` `MagickCore-config --libs`"
++    AC_CHECK_LIB(MagickCore,GetImageInfo, passed=`expr $passed + 1`, failed=`expr $failed + 1`, [ $LIB_MAGICK ])
+     AC_MSG_CHECKING(if ImageMagick package is complete)
+     if test $passed -gt 0
+     then
+@@ -846,11 +846,11 @@
+         have_magick='no (failed tests)'
+     else
+ dnl	CFLAGS="`Magick-config --cflags` $CFLAGS"
+-	CPPFLAGS="`Magick-config --cppflags` $CPPFLAGS"
+-	LIB_MAGICK="$LIBS `Magick-config --ldflags` `Magick-config --libs`"
++	CPPFLAGS="`MagickCore-config --cppflags` $CPPFLAGS"
++	LIB_MAGICK="$LIBS `MagickCore-config --ldflags` `MagickCore-config --libs`"
+ dnl UNIQUIFY will remove duplicate library tokens leaving the last instance.
+ 	AC_UTILS_UNIQUIFY($LIB_MAGICK, LIBS)
+-	FMT_LIBS="$FMT_LIBS libMagick.a"
++	FMT_LIBS="$FMT_LIBS libMagickCore.a"
+ 	AC_DEFINE(HAVE_LIBMAGICK, 1, [Define to 1 if you have the ImageMagick libraries])
+ 	AC_MSG_RESULT(yes)
+         have_magick='yes'
+@@ -859,7 +859,7 @@
+         AC_MSG_RESULT(no)
+     fi
+   else
+-	AC_MSG_RESULT(no - Magick-config not found)
++	AC_MSG_RESULT(no - MagickCore-config not found)
+   fi
+ fi
+ fi

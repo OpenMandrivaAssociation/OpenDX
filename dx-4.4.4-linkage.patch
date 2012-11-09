@@ -1,0 +1,7 @@
+--- src/uipp/dxl/Makefile.am~	2003-07-11 20:12:16.000000000 -0400
++++ src/uipp/dxl/Makefile.am	2009-01-31 11:48:43.000000000 -0500
+@@ -20,3 +20,4 @@
+ 	socket.c value.c windows.c x11.c object.c
+ 
+ libDXL_la_LDFLAGS = -version-info $(MAJOR_VERSION):$(MINOR_VERSION)$(MICRO_VERSION):0
++libDXL_la_LIBADD = $(top_srcdir)/src/exec/libdx/libLIBDX.la  $(top_srcdir)/src/exec/libdx/libDXlite.la $(top_srcdir)/src/exec/libDXcallm.la

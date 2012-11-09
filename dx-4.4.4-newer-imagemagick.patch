@@ -1,0 +1,48 @@
+--- src/exec/dxmods/_im_image.c.imagemagick	2010-01-14 17:05:51.000000000 +0100
++++ src/exec/dxmods/_im_image.c	2010-01-14 17:13:46.000000000 +0100
+@@ -328,8 +328,10 @@
+             DestroyImage(image);
+             DestroyImageInfo(new_frame_info);
+             DestroyImageInfo(image_info);
+-#if MagickLibVersion > 0x0537
+-            DestroyConstitute();
++#if MagickLibVersion > 0x0657
++	    ConstituteComponentTerminus();
++#elif MagickLibVersion > 0x0537	    
++	    DestroyConstitute();
+ #endif
+              DXSetError(ERROR_INTERNAL, "reason = %s, description = %s",
+                         image->exception.reason,
+@@ -345,7 +347,9 @@
+             DestroyImage(image);
+             DestroyImageInfo(new_frame_info);
+             DestroyImageInfo(image_info);
+-#if MagickLibVersion > 0x0537
++#if MagickLibVersion > 0x0657
++	    ConstituteComponentTerminus();
++#elif MagickLibVersion > 0x0537
+             DestroyConstitute();
+ #endif
+             DXErrorReturn( ERROR_INTERNAL , "out of memory allocating buffer _im_image.c");
+@@ -374,7 +378,9 @@
+         DestroyImage(image);
+         DestroyImageInfo(image_info);
+         DestroyImageInfo(new_frame_info);
+-#if MagickLibVersion > 0x0537
++#if MagickLibVersion > 0x0657
++	ConstituteComponentTerminus();
++#elif MagickLibVersion > 0x0537
+         DestroyConstitute();
+ #endif
+         
+@@ -490,7 +496,9 @@
+         DXFree(copycolors);
+         DestroyImage(image);
+         DestroyImageInfo(image_info);
+-#if MagickLibVersion > 0x0537
++#if MagickLibVersion > 0x0657
++	ConstituteComponentTerminus();
++#elif MagickLibVersion > 0x0537
+         DestroyConstitute();
+ #endif
+     }

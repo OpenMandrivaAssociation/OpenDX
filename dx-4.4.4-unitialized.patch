@@ -1,0 +1,86 @@
+--- dx-4.4.4/src/exec/dpexec/command.c.uninit	2006-01-05 23:55:41.000000000 +0100
++++ dx-4.4.4/src/exec/dpexec/command.c	2007-02-18 10:33:57.000000000 +0100
+@@ -425,6 +425,7 @@
+     int optlen = 0;
+     int opterr = FALSE;
+ 
++    dpentry.SwapMsg = 0;
+     if(add) {
+         if(options && *options != '-') {
+             /* print error but add to table anyway */
+--- dx-4.4.4/src/exec/dpexec/remote.c.uninit	2003-10-01 22:23:24.000000000 +0200
++++ dx-4.4.4/src/exec/dpexec/remote.c	2007-02-18 10:33:57.000000000 +0100
+@@ -754,6 +754,15 @@
+     return _dxfExRemote(in, out);
+ }
+ 
++void
++_dxfExRemoteDXqmessage(char *who, char *message, ...)
++{
++    va_list arg;
++    va_start(arg,message);
++    DXqmessage(who, message, arg);
++    va_end(arg);
++}
++
+ Error
+ _dxfExRemote (Object *in, Object *out)
+ {
+@@ -991,7 +1000,7 @@
+ 		if (!msgObj || !DXExtractString(msgObj, &msg))
+ 		    goto message_cleanup;
+ 
+-		DXqmessage (who, msg, nolist);
++		_dxfExRemoteDXqmessage (who, msg);
+ 	    }
+ 	    /* async request */
+ 	    if (isMsg == 2)
+--- dx-4.4.4/src/exec/dxmods/_regstream.c.uninit	2006-01-02 22:11:08.000000000 +0100
++++ dx-4.4.4/src/exec/dxmods/_regstream.c	2007-02-18 10:33:57.000000000 +0100
+@@ -1063,6 +1063,13 @@
+ 	mOut.b[0] = -(mIn.b[0]*mOut.A[0][0] + mIn.b[1]*mOut.A[0][1]);
+ 	mOut.b[1] = -(mIn.b[0]*mOut.A[1][0] + mIn.b[1]*mOut.A[1][1]);
+ 
++/* initialize third component of matrix to zero */
++	mOut.A[0][2] = 0;
++	mOut.A[1][2] = 0;
++	mOut.A[2][0] = 0;
++	mOut.A[2][1] = 0;
++	mOut.A[2][2] = 0;
++	mOut.b[2] = 0;
+ 	return mOut;
+     }
+ }
+--- dx-4.4.4/src/exec/hwrender/hwDraw.c.uninit	2006-01-03 18:02:26.000000000 +0100
++++ dx-4.4.4/src/exec/hwrender/hwDraw.c	2007-02-18 10:33:57.000000000 +0100
+@@ -63,7 +63,7 @@
+   DEFGLOBALDATA(globals);
+   DEFPORT(PORT_HANDLE);
+   gatherO gather = NULL;
+-  int r;
++  int r = 0;
+ 
+ 
+ #if defined(DX_NATIVE_WINDOWS)
+--- dx-4.4.4/src/uipp/dxuilib/GraphLayout.C.uninit	2006-06-29 20:56:46.000000000 +0200
++++ dx-4.4.4/src/uipp/dxuilib/GraphLayout.C	2007-02-18 10:33:57.000000000 +0100
+@@ -1405,7 +1405,7 @@
+ //
+ void GraphLayout::repositionNewPlacements (Node* root, boolean disjoint, List& placed)
+ {
+-    Node* n;
++    Node* n = NULL;
+     NodeInfo* ninfo = (NodeInfo*)root->getLayoutInformation();
+     LayoutGroup* group = ninfo->getLayoutGroup();
+     placed.appendElement(root);
+--- dx-4.4.4/src/uipp/widgets/findcolor.c.uninit	2006-01-05 23:55:57.000000000 +0100
++++ dx-4.4.4/src/uipp/widgets/findcolor.c	2007-02-18 10:33:57.000000000 +0100
+@@ -138,6 +138,8 @@
+ 		    tmp.green = cell_def[i].green;
+ 		    tmp.blue = cell_def[i].blue;
+ 		    tmp.pixel = cell_def[i].pixel;
++		    tmp.flags = DoRed | DoGreen | DoBlue;
++		    tmp.pad = 0;
+ 		    }
+ 		break;
+ 	    default:

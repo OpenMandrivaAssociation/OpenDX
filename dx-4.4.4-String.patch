@@ -1,0 +1,1170 @@
+--- dx-4.4.4/src/uipp/dxuilib/DXApplication.C.strng	2006-06-22 21:45:34.000000000 +0200
++++ dx-4.4.4/src/uipp/dxuilib/DXApplication.C	2007-02-18 10:03:31.000000000 +0100
+@@ -706,8 +706,8 @@
+ XtResource _DXResourceList[] =
+ {
+     {
+-        "standInBackground",
+-        "StandInBackground",
++        (String)"standInBackground",
++        (String)"StandInBackground",
+         XmRPixel,
+         sizeof(Pixel),
+ 	XtOffset(DXResource*, standInBackground),
+@@ -715,8 +715,8 @@
+ 	(XtPointer)"#5F9EA0" // CadetBlue 
+     },
+     {
+-        "executionHighlightForeground",
+-        "Foreground",
++        (String)"executionHighlightForeground",
++        (String)"Foreground",
+         XmRPixel,
+         sizeof(Pixel),
+ 	XtOffset(DXResource*, executionHighlightForeground),
+@@ -724,8 +724,8 @@
+ 	(XtPointer)"#00ff7e"
+     },
+     {
+-        "backgroundExecutionForeground",
+-        "Foreground",
++        (String)"backgroundExecutionForeground",
++        (String)"Foreground",
+         XmRPixel,
+         sizeof(Pixel),
+ 	XtOffset(DXResource*, backgroundExecutionForeground),
+@@ -733,8 +733,8 @@
+ 	(XtPointer)"#7e7eb4"
+     },
+     {
+-        "errorHighlightForeground",
+-        "Foreground",
++        (String)"errorHighlightForeground",
++        (String)"Foreground",
+         XmRPixel,
+         sizeof(Pixel),
+ 	XtOffset(DXResource*, errorNodeForeground),
+@@ -742,8 +742,8 @@
+ 	(XtPointer)"#ff9b00"
+     },
+     {
+-        "foreground",
+-        "Foreground",
++        (String)"foreground",
++        (String)"Foreground",
+         XmRPixel,
+         sizeof(Pixel),
+ 	XtOffset(DXResource*, foreground),
+@@ -751,8 +751,8 @@
+ 	(XtPointer)"Black"
+     },
+     {
+-        "background",
+-        "Background",
++        (String)"background",
++        (String)"Background",
+         XmRPixel,
+         sizeof(Pixel),
+ 	XtOffset(DXResource*, background),
+@@ -760,8 +760,8 @@
+ 	(XtPointer)"#b4b4b4"
+     },
+     {
+-        "InsensitiveColor",
+-        "Color",
++        (String)"InsensitiveColor",
++        (String)"Color",
+         XmRPixel,
+         sizeof(Pixel),
+         XtOffset(DXResource*, insensitiveColor),
+@@ -769,8 +769,8 @@
+         (XtPointer)"#888888"
+     },
+     {
+-	"anchorMode",
+-	"AnchorMode",
++	(String)"anchorMode",
++	(String)"AnchorMode",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, anchorMode),
+@@ -778,8 +778,8 @@
+ 	(XtPointer)EDIT_ANCHOR_MODE
+     },
+     {
+-	"DXVersion",
+-	"Flag",
++	(String)"DXVersion",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, echoVersion),
+@@ -787,8 +787,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"debugMode",
+-	"Flag",
++	(String)"debugMode",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, debugMode),
+@@ -796,8 +796,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"showInstanceNumbers",
+-	"Flag",
++	(String)"showInstanceNumbers",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, showInstanceNumbers),
+@@ -805,8 +805,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"directory",
+-	"Pathname",
++	(String)"directory",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, workingDirectory),
+@@ -814,8 +814,8 @@
+ 	NULL
+     },
+     {
+-	"executive",
+-	"Pathname",
++	(String)"executive",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, executive),
+@@ -823,8 +823,8 @@
+ 	NULL
+     },
+     {
+-	"executeProgram",
+-	"Flag",
++	(String)"executeProgram",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, executeProgram),
+@@ -832,8 +832,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"executeOnChange",
+-	"Flag",
++	(String)"executeOnChange",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, executeOnChange),
+@@ -841,8 +841,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"printHelpMessage",
+-	"Flag",
++	(String)"printHelpMessage",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, showHelpMessage),
+@@ -850,8 +850,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"host",
+-	"Host",
++	(String)"host",
++	(String)"Host",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, server),
+@@ -859,8 +859,8 @@
+ 	NULL
+     },
+     {
+-	"noAnchorAtStartup",
+-	"Flag",
++	(String)"noAnchorAtStartup",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noAnchorAtStartup),
+@@ -868,8 +868,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noConfirmedQuit",
+-	"Flag",
++	(String)"noConfirmedQuit",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noConfirmedQuit),
+@@ -877,8 +877,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"macros",
+-	"Searchlist",
++	(String)"macros",
++	(String)"Searchlist",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, macros),
+@@ -886,8 +886,8 @@
+ 	NULL
+     },
+     {
+-	"memory",
+-	"Number",
++	(String)"memory",
++	(String)"Number",
+ 	XmRInt,
+ 	sizeof(int),
+ 	XtOffset(DXResource*, memorySize),
+@@ -895,8 +895,8 @@
+ 	0
+     },
+     {
+-	"metric",
+-	"Flag",
++	(String)"metric",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, isMetric),
+@@ -904,8 +904,8 @@
+ 	(XtPointer)False	
+     },
+     {
+-	"messages",
+-	"Pathname",
++	(String)"messages",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, errorPath),
+@@ -913,8 +913,8 @@
+ 	NULL
+     },
+     {
+-	"port",
+-	"Number",
++	(String)"port",
++	(String)"Number",
+ 	XmRInt,
+ 	sizeof(int),
+ 	XtOffset(DXResource*, port),
+@@ -922,8 +922,8 @@
+ 	0
+     },
+     {
+-        "printImageCommand",
+-        "PrintCommand",
++        (String)"printImageCommand",
++        (String)"PrintCommand",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, printImageCommand),
+@@ -931,8 +931,8 @@
+         (XtPointer) "lpr"
+     },
+     {
+-        "printImageFormat",
+-        "ImageFileFormat",
++        (String)"printImageFormat",
++        (String)"ImageFileFormat",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, printImageFormat),
+@@ -940,8 +940,8 @@
+         (XtPointer) "PSCOLOR"
+     },
+     {
+-        "printImagePageSize",
+-        "ImagePageSize",
++        (String)"printImagePageSize",
++        (String)"ImagePageSize",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, printImagePageSize),
+@@ -949,8 +949,8 @@
+         NULL 
+     },
+     {
+-        "printImageSize",
+-        "ImageSize",
++        (String)"printImageSize",
++        (String)"ImageSize",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, printImageSize),
+@@ -958,8 +958,8 @@
+        	NULL 
+     },
+     {
+-        "printImageResolution",
+-        "ImageResolution",
++        (String)"printImageResolution",
++        (String)"ImageResolution",
+         XmRInt,
+         sizeof(int),
+         XtOffset(DXResource*, printImageResolution),
+@@ -968,8 +968,8 @@
+ 			// tell if the user specified this option/resource
+     },
+     {
+-	"program",
+-	"Pathname",
++	(String)"program",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, program),
+@@ -977,8 +977,8 @@
+ 	NULL
+     },
+     {
+-	"cfg",
+-	"Pathname",
++	(String)"cfg",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, cfgfile),
+@@ -986,8 +986,8 @@
+ 	NULL
+     },
+     {
+-	"runLocally",
+-	"Flag",
++	(String)"runLocally",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, runLocally),
+@@ -995,8 +995,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"runUIOnly",
+-	"Flag",
++	(String)"runUIOnly",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, runUIOnly),
+@@ -1004,8 +1004,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "saveImageFormat",
+-        "ImageFileFormat",
++        (String)"saveImageFormat",
++        (String)"ImageFileFormat",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, saveImageFormat),
+@@ -1015,8 +1015,8 @@
+ 			// specified this option/resource
+     },
+     {
+-        "saveImagePageSize",
+-        "ImagePageSize",
++        (String)"saveImagePageSize",
++        (String)"ImagePageSize",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, saveImagePageSize),
+@@ -1026,8 +1026,8 @@
+ 			// specified this option/resource
+     },
+     {
+-        "saveImageSize",
+-        "ImageSize",
++        (String)"saveImageSize",
++        (String)"ImageSize",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, saveImageSize),
+@@ -1035,8 +1035,8 @@
+        	NULL, 		
+     },
+     {
+-        "saveImageResolution",
+-        "ImageResolution",
++        (String)"saveImageResolution",
++        (String)"ImageResolution",
+         XmRInt,
+         sizeof(int),
+         XtOffset(DXResource*, saveImageResolution),
+@@ -1045,8 +1045,8 @@
+ 			// tell if the user specified this option/resource
+     },
+     {
+-	"suppressStartupWindows",
+-	"Flag",
++	(String)"suppressStartupWindows",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, suppressStartupWindows),
+@@ -1054,8 +1054,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"userModuleDescriptionFile",
+-	"Pathname",
++	(String)"userModuleDescriptionFile",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, userModules),
+@@ -1063,8 +1063,8 @@
+ 	NULL
+     },
+     {
+-	"executiveModuleDescriptionFile",
+-	"Pathname",
++	(String)"executiveModuleDescriptionFile",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, executiveModule),
+@@ -1072,8 +1072,8 @@
+ 	NULL
+     },
+     {
+-	"uiModuleDescriptionFile",
+-	"Pathname",
++	(String)"uiModuleDescriptionFile",
++	(String)"Pathname",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, uiModule),
+@@ -1081,8 +1081,8 @@
+ 	NULL
+     },
+     {
+-        "noWindowPlacement",
+-        "WindowPlacement",
++        (String)"noWindowPlacement",
++        (String)"WindowPlacement",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noWindowPlacement),
+@@ -1094,8 +1094,8 @@
+      * Backdoor resources:
+      */
+     {
+-	"restrictionLevel",
+-	"Restriction",
++	(String)"restrictionLevel",
++	(String)"Restriction",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, restrictionLevel),
+@@ -1103,8 +1103,8 @@
+ 	NULL
+     },
+     {
+-	"noRWConfig",
+-	"Flag",
++	(String)"noRWConfig",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noRWConfig),
+@@ -1112,8 +1112,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noPanelEdit",
+-	"Flag",
++	(String)"noPanelEdit",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noPanelEdit),
+@@ -1121,8 +1121,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noInteractorEdits",
+-	"Flag",
++	(String)"noInteractorEdits",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noInteractorEdits),
+@@ -1130,8 +1130,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noInteractorAttributes",
+-	"Flag",
++	(String)"noInteractorAttributes",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noInteractorAttributes),
+@@ -1139,8 +1139,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noInteractorMovement",
+-	"Flag",
++	(String)"noInteractorMovement",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noInteractorMovement),
+@@ -1148,8 +1148,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noOpenAllPanels",
+-	"Flag",
++	(String)"noOpenAllPanels",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noOpenAllPanels),
+@@ -1157,8 +1157,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noPanelAccess",
+-	"Flag",
++	(String)"noPanelAccess",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noPanelAccess),
+@@ -1166,8 +1166,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noPanelOptions",
+-	"Flag",
++	(String)"noPanelOptions",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noPanelOptions),
+@@ -1175,8 +1175,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noMessageInfoOption",
+-	"Flag",
++	(String)"noMessageInfoOption",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noMessageInfoOption),
+@@ -1184,8 +1184,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noMessageWarningOption",
+-	"Flag",
++	(String)"noMessageWarningOption",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noMessageWarningOption),
+@@ -1193,8 +1193,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noEditorOnError",
+-	"Flag",
++	(String)"noEditorOnError",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noEditorOnError),
+@@ -1202,8 +1202,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noScriptCommands",
+-	"Flag",
++	(String)"noScriptCommands",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noScriptCommands),
+@@ -1211,8 +1211,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noPGroupAssignment",
+-	"Flag",
++	(String)"noPGroupAssignment",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noPGroupAssignment),
+@@ -1220,8 +1220,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noImageRWNetFile",
+-	"Flag",
++	(String)"noImageRWNetFile",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noImageRWNetFile),
+@@ -1229,8 +1229,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"limitedNetFileSelection",
+-	"Flag",
++	(String)"limitedNetFileSelection",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, limitedNetFileSelection),
+@@ -1238,8 +1238,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "netPath",
+-        "NetPath",
++        (String)"netPath",
++        (String)"NetPath",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, netPath),
+@@ -1247,8 +1247,8 @@
+ 	NULL
+     },
+     {
+-	"noImageLoad",
+-	"Flag",
++	(String)"noImageLoad",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noImageLoad),
+@@ -1256,8 +1256,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noImageSaving",
+-	"Flag",
++	(String)"noImageSaving",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noImageSaving),
+@@ -1265,8 +1265,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noImagePrinting",
+-	"Flag",
++	(String)"noImagePrinting",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noImagePrinting),
+@@ -1274,8 +1274,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"limitImageOptions",
+-	"Flag",
++	(String)"limitImageOptions",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, limitImageOptions),
+@@ -1283,8 +1283,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "notifySaveNet",
+-        "Flag",
++        (String)"notifySaveNet",
++        (String)"Flag",
+         XmRBoolean,
+         sizeof(Boolean),
+         XtOffset(DXResource*, notifySaveNet),
+@@ -1292,8 +1292,8 @@
+         (XtPointer)False
+     },
+     {
+-        "noNetworkExecute",
+-        "Flag",
++        (String)"noNetworkExecute",
++        (String)"Flag",
+         XmRBoolean,
+         sizeof(Boolean),
+         XtOffset(DXResource*, noNetworkExecute),
+@@ -1301,8 +1301,8 @@
+         (XtPointer)False
+     },
+     {
+-	"noEditorAccess",
+-	"Flag",
++	(String)"noEditorAccess",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noEditorAccess),
+@@ -1310,8 +1310,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noDXHelp",
+-	"Flag",
++	(String)"noDXHelp",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noDXHelp),
+@@ -1319,8 +1319,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noCMapSetNameOption",
+-	"Flag",
++	(String)"noCMapSetNameOption",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noCMapSetNameOption),
+@@ -1328,8 +1328,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noCMapOpenMap",
+-	"Flag",
++	(String)"noCMapOpenMap",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noCMapOpenMap),
+@@ -1337,8 +1337,8 @@
+ 	(XtPointer)False
+     },
+     {
+-	"noCMapSaveMap",
+-	"Flag",
++	(String)"noCMapSaveMap",
++	(String)"Flag",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noCMapSaveMap),
+@@ -1346,8 +1346,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "applicationPort",
+-        "Number",
++        (String)"applicationPort",
++        (String)"Number",
+ 	XmRInt,
+ 	sizeof(int),
+ 	XtOffset(DXResource*, applicationPort),
+@@ -1355,8 +1355,8 @@
+ 	NULL
+     },
+     {
+-        "applicationHost",
+-        "ApplicationHost",
++        (String)"applicationHost",
++        (String)"ApplicationHost",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, applicationHost),
+@@ -1364,8 +1364,8 @@
+ 	NULL
+     },
+     {
+-        "infoEnabled",
+-        "InfoEnabled",
++        (String)"infoEnabled",
++        (String)"InfoEnabled",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, infoEnabled),
+@@ -1373,8 +1373,8 @@
+ 	(XtPointer)True
+     },
+     {
+-        "warningEnabled",
+-        "WarningEnabled",
++        (String)"warningEnabled",
++        (String)"WarningEnabled",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, warningEnabled),
+@@ -1382,8 +1382,8 @@
+ 	(XtPointer)True
+     },
+     {
+-        "errorEnabled",
+-        "ErrorEnabled",
++        (String)"errorEnabled",
++        (String)"ErrorEnabled",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, errorEnabled),
+@@ -1391,8 +1391,8 @@
+ 	(XtPointer)True
+     },
+     {
+-        "moduleInfoOpensMessage",
+-        "ModuleInfoOpensMessage",
++        (String)"moduleInfoOpensMessage",
++        (String)"ModuleInfoOpensMessage",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, moduleInfoOpensMessage),
+@@ -1400,8 +1400,8 @@
+ 	(XtPointer)True
+     },
+     {
+-        "infoOpensMessage",
+-        "InfoOpensMessage",
++        (String)"infoOpensMessage",
++        (String)"InfoOpensMessage",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, infoOpensMessage),
+@@ -1409,8 +1409,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "warningOpensMessage",
+-        "WarningOpensMessage",
++        (String)"warningOpensMessage",
++        (String)"WarningOpensMessage",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, warningOpensMessage),
+@@ -1418,8 +1418,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "errorOpensMessage",
+-        "ErrorOpensMessage",
++        (String)"errorOpensMessage",
++        (String)"ErrorOpensMessage",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, errorOpensMessage),
+@@ -1427,8 +1427,8 @@
+ 	(XtPointer)True
+     },
+     {
+-        "useWindowSpecs",
+-        "UseWindowSpecs",
++        (String)"useWindowSpecs",
++        (String)"UseWindowSpecs",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, useWindowSpecs),
+@@ -1436,8 +1436,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "forceNetFileEncryption",
+-        "ForceNetFileEncryption",
++        (String)"forceNetFileEncryption",
++        (String)"ForceNetFileEncryption",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, forceNetFileEncryption),
+@@ -1445,8 +1445,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "cryptKey",
+-        "Cryptkey",
++        (String)"cryptKey",
++        (String)"Cryptkey",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, cryptKey),
+@@ -1454,8 +1454,8 @@
+         NULL
+     },
+     {
+-        "exitAfter",
+-        "ExitAfter",
++        (String)"exitAfter",
++        (String)"ExitAfter",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, exitAfter),
+@@ -1463,8 +1463,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "forceLicense",
+-        "License",
++        (String)"forceLicense",
++        (String)"License",
+         XmRString,
+         sizeof(String),
+         XtOffset(DXResource*, forceFunctionalLicense),
+@@ -1472,8 +1472,8 @@
+         NULL
+     },
+     {
+-        "noExecuteMenus",
+-        "NoExecuteMenus",
++        (String)"noExecuteMenus",
++        (String)"NoExecuteMenus",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noExecuteMenus),
+@@ -1481,8 +1481,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "noConnectionMenus",
+-        "NoConnectionMenus",
++        (String)"noConnectionMenus",
++        (String)"NoConnectionMenus",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noConnectionMenus),
+@@ -1490,8 +1490,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "noWindowsMenus",
+-        "NoWindowsMenus",
++        (String)"noWindowsMenus",
++        (String)"NoWindowsMenus",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noWindowsMenus),
+@@ -1499,8 +1499,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "noExitOptions",
+-        "NoExitOptions",
++        (String)"noExitOptions",
++        (String)"NoExitOptions",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noExitOptions),
+@@ -1508,8 +1508,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "noImageMenus",
+-        "NoMenus",
++        (String)"noImageMenus",
++        (String)"NoMenus",
+ 	XmRBoolean,
+ 	sizeof(Boolean),
+ 	XtOffset(DXResource*, noImageMenus),
+@@ -1517,8 +1517,8 @@
+ 	(XtPointer)False
+     },
+     {
+-        "oemApplicationName",
+-        "ApplicationName",
++        (String)"oemApplicationName",
++        (String)"ApplicationName",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, oemApplicationName),
+@@ -1526,8 +1526,8 @@
+ 	NULL
+     },
+     {
+-        "oemApplicationNameCode",
+-        "ApplicationNameCode",
++        (String)"oemApplicationNameCode",
++        (String)"ApplicationNameCode",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, oemApplicationNameCode),
+@@ -1535,8 +1535,8 @@
+ 	NULL
+     },
+     {
+-        "oemLicenseCode",
+-        "LicenseCode",
++        (String)"oemLicenseCode",
++        (String)"LicenseCode",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, oemLicenseCode),
+@@ -1544,8 +1544,8 @@
+ 	NULL
+     },
+     {
+-        "viewDataFile",
+-        "ViewDataFile",
++        (String)"viewDataFile",
++        (String)"ViewDataFile",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, viewDataFile),
+@@ -1553,8 +1553,8 @@
+ 	NULL
+     },
+      {
+-       "autoScrollVPE",
+-       "Flag",
++       (String)"autoScrollVPE",
++       (String)"Flag",
+        XmRBoolean,
+        sizeof(Boolean),
+        XtOffset(DXResource*, autoScrollVPEInitVal),
+@@ -1562,8 +1562,8 @@
+        (XtPointer)True
+      },
+     {
+-	"autoLayoutHeight",
+-	"Number",
++	(String)"autoLayoutHeight",
++	(String)"Number",
+ 	XmRInt,
+ 	sizeof(int),
+ 	XtOffset(DXResource*, autoLayoutHeight),
+@@ -1571,8 +1571,8 @@
+ 	0
+     },
+     {
+-	"autoLayoutGroupSpacing",
+-	"Number",
++	(String)"autoLayoutGroupSpacing",
++	(String)"Number",
+ 	XmRInt,
+ 	sizeof(int),
+ 	XtOffset(DXResource*, autoLayoutGroupSpacing),
+@@ -1580,8 +1580,8 @@
+ 	0
+     },
+     {
+-	"autoLayoutNodeSpacing",
+-	"Number",
++	(String)"autoLayoutNodeSpacing",
++	(String)"Number",
+ 	XmRInt,
+ 	sizeof(int),
+ 	XtOffset(DXResource*, autoLayoutNodeSpacing),
+@@ -1592,8 +1592,8 @@
+      // For java
+      //
+     {
+-        "cosmoDir",
+-        "CosmoDir",
++        (String)"cosmoDir",
++        (String)"CosmoDir",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, cosmoDir),
+@@ -1601,8 +1601,8 @@
+ 	(XtPointer) ""
+     },
+     {
+-        "jdkDir",
+-        "JdkDir",
++        (String)"jdkDir",
++        (String)"JdkDir",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, jdkDir),
+@@ -1610,8 +1610,8 @@
+ 	(XtPointer) ""
+     },
+     {
+-        "htmlDir",
+-        "HtmlDir",
++        (String)"htmlDir",
++        (String)"HtmlDir",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, htmlDir),
+@@ -1619,8 +1619,8 @@
+ 	(XtPointer) ""
+     },
+     {
+-        "serverDir",
+-        "ServerDir",
++        (String)"serverDir",
++        (String)"ServerDir",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, serverDir),
+@@ -1628,8 +1628,8 @@
+ 	(XtPointer) ""
+     },
+     {
+-        "dxJarFile",
+-        "DxJarFile",
++        (String)"dxJarFile",
++        (String)"DxJarFile",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, dxJarFile),
+@@ -1637,8 +1637,8 @@
+ 	(XtPointer) ""
+     },
+     {
+-        "userHtmlDir",
+-        "UserHtmlDir",
++        (String)"userHtmlDir",
++        (String)"UserHtmlDir",
+ 	XmRString,
+ 	sizeof(String),
+ 	XtOffset(DXResource*, userHtmlDir),
+--- dx-4.4.4/src/uipp/tutor/TutorApplication.C.strng	2006-05-08 18:20:14.000000000 +0200
++++ dx-4.4.4/src/uipp/tutor/TutorApplication.C	2007-02-18 10:03:31.000000000 +0100
+@@ -70,8 +70,8 @@
+ XtResource _TutorResourceList[] =
+ {
+     {
+-        "tutorFile",
+-        "Pathname",
++        (String)"tutorFile",
++        (String)"Pathname",
+         XmRString,
+         sizeof(String),
+         XtOffset(TutorResource*, tutorFile),
+@@ -79,8 +79,8 @@
+         (XtPointer)"Tutorial"
+     },
+     {
+-	"TutorInsensitiveColor",
+-	"Color",
++	(String)"TutorInsensitiveColor",
++	(String)"Color",
+ 	XmRPixel,
+ 	sizeof(Pixel),
+ 	XtOffset(TutorResource*, insensitiveColor),
+@@ -88,8 +88,8 @@
+ 	(XtPointer)"#888"
+     },
+     {
+-        "root",
+-        "Pathname",
++        (String)"root",
++        (String)"Pathname",
+         XmRString,
+         sizeof(String),
+         XtOffset(TutorResource*, UIRoot),

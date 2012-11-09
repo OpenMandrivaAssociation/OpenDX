@@ -1,0 +1,55 @@
+--- dx-4.3.2/src/exec/libdx/rwobject.c.types	2003-07-12 02:12:12.000000000 +0200
++++ dx-4.3.2/src/exec/libdx/rwobject.c	2005-07-10 11:30:17.000000000 +0200
+@@ -22,7 +22,7 @@
+ #endif
+ 
+ #if defined(HAVE_TYPES_H)
+-#include <types.h>
++#include <linux/types.h>
+ #endif
+ 
+ #if defined(HAVE_SIGNAL_H)
+--- dx-4.3.2/src/uipp/base/defines.h.types	2005-07-10 11:41:10.000000000 +0200
++++ dx-4.3.2/src/uipp/base/defines.h	2005-07-10 11:40:58.000000000 +0200
+@@ -72,7 +72,7 @@
+ #endif
+ 
+ #if defined(HAVE_TYPES_H)
+-#include <types.h>
++#include <linux/types.h>
+ #endif
+ 
+ #if defined(HAVE_PROCESS_H)
+--- dx-4.3.2/src/uipp/dxl/os2.c.types	2003-07-12 02:12:16.000000000 +0200
++++ dx-4.3.2/src/uipp/dxl/os2.c	2005-07-10 11:44:20.000000000 +0200
+@@ -13,7 +13,7 @@
+ #include <float.h>
+ 
+ #if defined(HAVE_TYPES_H)
+-#include <types.h>
++#include <linux/types.h>
+ #endif
+ 
+ #if defined(HAVE_SYS_TYPES_H)
+--- dx-4.3.2/src/uipp/widgets/Number.c.types	2002-01-16 16:41:18.000000000 +0100
++++ dx-4.3.2/src/uipp/widgets/Number.c	2005-07-10 11:46:16.000000000 +0200
+@@ -38,7 +38,7 @@
+ #endif
+ 
+ #if defined(HAVE_TYPES_H)
+-#include <types.h>
++#include <linux/types.h>
+ #endif
+ 
+ #if defined(HAVE_SYS_TYPES_H)
+--- dx-4.3.2/src/uipp/widgets/MultiText.c.types	2002-03-25 17:42:41.000000000 +0100
++++ dx-4.3.2/src/uipp/widgets/MultiText.c	2005-07-10 11:46:56.000000000 +0200
+@@ -17,7 +17,7 @@
+ #include <ctype.h>
+ #endif
+ #if defined (HAVE_TYPES_H)
+-#include <types.h>
++#include <linux/types.h>
+ #endif
+ #include <X11/IntrinsicP.h>
+ #include <Xm/Xm.h>
