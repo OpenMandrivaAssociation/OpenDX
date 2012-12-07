@@ -1,0 +1,2 @@
+addFilter("E: non-executable-script.*")
+addFilter("E: wrong-script-interpreter.*")
