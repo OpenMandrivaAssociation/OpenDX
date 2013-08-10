@@ -1,5 +1,5 @@
---- src/exec/dpexec/dxmain.c.str	2009-01-31 11:10:06.000000000 -0500
-+++ src/exec/dpexec/dxmain.c	2009-01-31 11:11:03.000000000 -0500
+--- ./src/exec/dpexec/dxmain.c.str	2009-01-31 11:10:06.000000000 -0500
++++ ./src/exec/dpexec/dxmain.c	2009-01-31 11:11:03.000000000 -0500
 @@ -2129,7 +2129,7 @@
      if ((SFILEisatty(yyin) || (_dxd_exRshInput && yyin == _dxd_exBaseFD)) &&
              !prompted && _dxf_ExGQAllDone() && !SFILECharReady(yyin)) {
@@ -18,8 +18,8 @@
  	fflush (stdout);\
  	prompted = TRUE;\
      }\
---- src/exec/dpexec/lex.c.str	2009-01-31 11:11:44.000000000 -0500
-+++ src/exec/dpexec/lex.c	2009-01-31 11:11:54.000000000 -0500
+--- ./src/exec/dpexec/lex.c.str	2009-01-31 11:11:44.000000000 -0500
++++ ./src/exec/dpexec/lex.c	2009-01-31 11:11:54.000000000 -0500
 @@ -648,7 +648,7 @@
  		    if ((_dxd_exIsatty || _dxd_exRshInput) && !SFILECharReady(yyin))
  		    {
@@ -29,8 +29,8 @@
  			fflush (stdout);
  		    }
  		    break;
---- src/exec/dxmods/colormap.c.str	2002-03-21 12:09:58.000000000 -0500
-+++ src/exec/dxmods/colormap.c	2009-01-31 11:00:38.000000000 -0500
+--- ./src/exec/dxmods/colormap.c.str	2002-03-21 12:09:58.000000000 -0500
++++ ./src/exec/dxmods/colormap.c	2009-01-31 11:00:38.000000000 -0500
 @@ -1167,7 +1167,7 @@
        if (!ei.msgbuf)
  	 return ERROR;
@@ -49,8 +49,8 @@
     if (num==1){
        sprintf(ei.mp,"{"); ei.mp++;
     }
---- src/exec/dxmods/exp_gai.c.str	2000-08-24 16:04:29.000000000 -0400
-+++ src/exec/dxmods/exp_gai.c	2009-01-31 11:00:38.000000000 -0500
+--- ./src/exec/dxmods/exp_gai.c.str	2000-08-24 16:04:29.000000000 -0400
++++ ./src/exec/dxmods/exp_gai.c	2009-01-31 11:00:38.000000000 -0500
 @@ -422,7 +422,7 @@
  	    if (first == ON) 
  	       first = OFF;
@@ -157,8 +157,8 @@
  	       sprintf(cmp,"%s_cmp%d",name,j);
  	       pstring(h->dfp,0,0,0,cmp);
  	    }
---- src/uipp/dxl/conn.c.str	2009-01-31 11:19:15.000000000 -0500
-+++ src/uipp/dxl/conn.c	2009-01-31 11:19:25.000000000 -0500
+--- ./src/uipp/dxl/conn.c.str	2009-01-31 11:19:15.000000000 -0500
++++ ./src/uipp/dxl/conn.c	2009-01-31 11:19:25.000000000 -0500
 @@ -389,7 +389,7 @@
  	    char buf[2048];
  	    int n = read(err,buf,2048);
@@ -168,8 +168,8 @@
  	}
  #if defined(intelnt) || defined(WIN32)
      TerminateProcess(child, -1);
---- src/uipp/dxui/SelectionNode.C.str	2009-01-31 11:40:56.000000000 -0500
-+++ src/uipp/dxui/SelectionNode.C	2009-01-31 11:41:08.000000000 -0500
+--- ./src/uipp/dxui/SelectionNode.C.str	2009-01-31 11:40:56.000000000 -0500
++++ ./src/uipp/dxui/SelectionNode.C	2009-01-31 11:41:08.000000000 -0500
 @@ -960,7 +960,7 @@
  	ListIterator it(selection_stmts);
  	char* cp;
@@ -179,8 +179,8 @@
  	    delete cp;
  	}
      }
---- src/uipp/dxuilib/DXApplication.C.str	2009-01-31 11:13:20.000000000 -0500
-+++ src/uipp/dxuilib/DXApplication.C	2009-01-31 11:15:01.000000000 -0500
+--- ./src/uipp/dxuilib/DXApplication.C.str	2009-01-31 11:13:20.000000000 -0500
++++ ./src/uipp/dxuilib/DXApplication.C	2009-01-31 11:15:01.000000000 -0500
 @@ -2553,7 +2553,7 @@
  		const char* errmsg = 
  			GraphLayout::SetHeightPerLevel (DXApplication::resource.autoLayoutHeight);
