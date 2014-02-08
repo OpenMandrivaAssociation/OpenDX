@@ -5,7 +5,7 @@
 Summary:	IBM OpenDX (Data Explorer)
 Name:		OpenDX
 Version:	4.4.4
-Release:	18
+Release:	19
 Source:		http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
