@@ -40,7 +40,7 @@ BuildRequires:  netcdf-devel
 BuildRequires:	imagemagick
 BuildRequires:	kernel-source
 %ifnarch ppc
-BuildRequires:	hdf-devel
+BuildRequires:	hdf5-devel
 %endif
 
 %description
