@@ -1,0 +1,10 @@
+--- dx-4.4.4/src/exec/libdx/memory.c.orig	2014-03-03 23:26:48.317070949 +0000
++++ dx-4.4.4/src/exec/libdx/memory.c	2014-03-03 23:27:04.911071621 +0000
+@@ -66,7 +66,6 @@
+ 
+ #if linux
+ #include <linux/kernel.h>
+-#include <linux/sys.h>
+ #include <sys/sysinfo.h>
+ #endif
+ 
