@@ -154,7 +154,7 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 %doc AUTHORS LICENSE README
 %dir %{dxdir}
 %{_bindir}/*
-%{_mandir}/man1/*
+%{_mandir}/manl/*
 %{dxdir}/bin
 %{dxdir}/bin_linux
 %{dxdir}/doc
