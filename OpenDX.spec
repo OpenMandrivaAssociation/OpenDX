@@ -28,6 +28,7 @@ Patch16:	dx-4.4.4-fix-str-fmt.patch
 Patch17:	dx-4.4.4-linkage.patch
 Patch18:	opendx-4.4.4-concurrent-make-fix.patch
 Patch19:	dx-4.4.4-newer-imagemagick.patch
+Patch20:	dx-4.4.4-sysh.patch
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	imagemagick
