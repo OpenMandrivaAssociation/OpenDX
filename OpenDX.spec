@@ -170,6 +170,7 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 %{_iconsdir}/hicolor/16x16/apps/dx.png
 %{_datadir}/applications/*.desktop
 %exclude %{dxdir}/lib/mdf2c.awk
+%exclude %{dxdir}/lib/outboard.c
 
 %files devel
 %attr(644,root,root) %{_libdir}/*.a
@@ -179,4 +180,4 @@ rm -f %{buildroot}/%_libdir/dx/samples/data/externalfilter_solaris
 %{dxdir}/samples
 %{dxdir}/lib_linux
 %{dxdir}/lib/mdf2c.awk
-
+%{dxdir}/lib/outboard.c
