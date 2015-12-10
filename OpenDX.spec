@@ -5,7 +5,7 @@
 Summary:	IBM OpenDX (Data Explorer)
 Name:		OpenDX
 Version:	4.4.4
-Release:	26
+Release:	27
 Group:		Sciences/Other
 License:	IBM Public License
 Url:		http://www.opendx.org/
@@ -37,7 +37,7 @@ BuildRequires:	libtool
 BuildRequires:	kernel-source
 BuildRequires:	freetype-devel
 BuildRequires:	jbig-devel
-BuildRequires:	lesstif-devel
+BuildRequires:	motif-devel
 BuildRequires:	magic-devel
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(netcdf)
