@@ -5,7 +5,7 @@
 Summary:	IBM OpenDX (Data Explorer)
 Name:		OpenDX
 Version:	4.4.4
-Release:	27
+Release:	28
 Group:		Sciences/Other
 License:	IBM Public License
 Url:		http://www.opendx.org/
