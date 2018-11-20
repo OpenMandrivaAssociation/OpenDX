@@ -30,6 +30,7 @@ Patch17:	dx-4.4.4-linkage.patch
 Patch18:	opendx-4.4.4-concurrent-make-fix.patch
 Patch19:	dx-4.4.4-newer-imagemagick.patch
 Patch20:	dx-4.4.4-sysh.patch
+Patch21:	gcc14.patch
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	imagemagick
@@ -72,7 +73,7 @@ sed -i 's/-lnetcdf/-lnetcdf -lhdf5_hl -lhdf5 -lz/g' ./configure
 CFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
 CXXFLAGS="%optflags -O1 -fno-fast-math -fno-exceptions -Wno-deprecated -I/usr/src/linux/include -I%{_includedir}/ImageMagick" \
 
-%configure2_5x \
+%configure \
 	--prefix=%{_libdir} \
 	--with-x \
 	--with-magick \
