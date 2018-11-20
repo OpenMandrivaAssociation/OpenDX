@@ -43,6 +43,7 @@ BuildRequires:	magic-devel
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(netcdf)
 BuildRequires:	pkgconfig(xt)
+BuildRequires:	pkgconfig(egl)
 %ifnarch ppc
 BuildRequires:	hdf5-devel
 %endif
