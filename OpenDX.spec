@@ -42,6 +42,7 @@ BuildRequires:	motif-devel
 BuildRequires:	magic-devel
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(netcdf)
+BuildRequires:	pkgconfig(xt)
 %ifnarch ppc
 BuildRequires:	hdf5-devel
 %endif
