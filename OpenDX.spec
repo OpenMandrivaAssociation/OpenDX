@@ -65,7 +65,7 @@ applications with OpenDX.
 
 %prep
 %setup -q -n dx-%{version} -a 1
-%apply_patches
+%autopatch -p1
 rm -f configure; autoreconf -fi
 
 #fix netcdf hdf5 linking
