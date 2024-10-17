@@ -8,7 +8,7 @@ Version:	4.4.4
 Release:	30
 Group:		Sciences/Other
 License:	IBM Public License
-Url:		http://www.opendx.org/
+Url:		https://www.opendx.org/
 Source0:	http://opendx.npaci.edu/source/dx-%{version}.tar.bz2
 Source1:	http://opendx.npaci.edu/source/dxsamples-%{sver}.tar.bz2
 Source2:	dx.png
