@@ -31,6 +31,11 @@ Patch18:	opendx-4.4.4-concurrent-make-fix.patch
 Patch19:	dx-4.4.4-newer-imagemagick.patch
 Patch20:	dx-4.4.4-sysh.patch
 Patch21:	gcc14.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	imagemagick
